@@ -16,8 +16,9 @@
             "role": "batman",
             "translation": "Batman",
             "side": "village",
-            "help": "The Dark Knight, the Caped Crusader, the World's Greatest Detective, Batman... Whatever you call yourself, you're the coolest of the cool. Trained in several forms of martial arts, your skill is almost unparalleled. However, you have a thing against killing. It's not your style. You don't do guns. You're also very good at sneaking around, so you can /stalk two people at night.",
+            "help": "The Dark Knight, the Caped Crusader, the World's Greatest Detective, Batman... Whatever you call yourself, you're the coolest of the cool. Trained in several forms of martial arts, your skill is almost unparalleled. However, you have a thing against killing. It's not your style. You don't do guns. You're also very good at sneaking around, so you can /stalk two people at night. You have a lot of influence over Gotham, so your vote counts as 2.",
             "actions": {
+                "vote": 2,
                 "night": {
                     "stalk": {
                         "common": "Self",

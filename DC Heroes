@@ -1,0 +1,35 @@
+{
+    "name": "DC",
+    "author": [
+        "Sky Sentinel",
+        "Withoutatrace"
+    ],
+    "summary": "Join your favorite DC superheroes as they battle the evil forces of the Joker, Lex Luthor, and other famous villains!",
+    "sides": [
+        {
+            "side": "village",
+            "translation": "Heroes"
+        }
+    ],
+    "roles": [
+        {
+            "role": "batman",
+            "translation": "Batman",
+            "side": "village",
+            "help": "The Dark Knight, the Caped Crusader, the World's Greatest Detective, Batman... Whatever you call yourself, you're the coolest of the cool. Trained in several forms of martial arts, your skill is almost unparalleled. However, you have a thing against killing. It's not your style. You don't do guns. You're also very good at sneaking around, so you can /stalk two people at night.",
+            "actions": {
+                "night": {
+                    "stalk": {
+                        "common": "Self",
+                        "priority": 99,
+                        "target": "AnyButSelf",
+                        "limit": 2
+                    }
+                }
+            }
+        }
+    ],
+    "roles1": [
+        "batman"
+    ]
+}

@@ -1,0 +1,153 @@
+{
+    "name": "DC",
+    "author": [
+        "Sky Sentinel",
+        "Withoutatrace"
+    ],
+    "summary": "Join your favorite DC superheroes as they battle the evil forces of the Joker, Lex Luthor, and other famous villains!",
+    "sides": [
+        {
+            "side": "village",
+            "translation": "Heroes"
+        },
+        {
+            "side": "joker",
+            "translation": "Joker Mafia"
+        }
+    ],
+    "roles": [
+        {
+            "role": "joker",
+            "translation": "Joker",
+            "side": "joker",
+            "help": "Ahaha! You're the Joker, one of the most infamous villains in the DC Universe! You can /kill someone at night (shared with Harley Quinn) and have a single, one-shot revealing daykill with /shoot. You can also /trick someone to scare them into exposing themself everyday with your trademark prop flag gun. When you're lynched, you'll get the last laugh-- a high-priority poison.",
+            "actions": {
+                "startup": "team-reveal",
+                "night": {
+                    "kill": {
+                        "target": "AnyButTeam",
+                        "common": "Team",
+                        "priority": 15
+                    }
+                },
+                "standby": {
+                    "shoot": {
+                        "command": "kill",
+                        "target": "AnyButTeam",
+                        "recharge": 999,
+                        "msg": "You can /shoot someone, which will reveal you and kill them, or you can /trick someone to reveal them!",
+                        "killmsg": "The Joker pulls out his pistol and takes aim at ~Target~. BANG! ...the bullet rips through ~Target~'s body, killing them instantly. ~Self~ laughs like a madman."
+                    },
+                    "trick": {
+                        "command": "expose",
+                        "target": "AnyButTeam",
+                        "exposemsg": "The Joker pulls out his pistol and takes aim at ~Target~. BANG! ...nothing happens. ~Role~ sighs in relief."
+                    }
+                },
+                "lynch": {
+                    "convertTo": "lastlaugh",
+                    "convertmsg": "Lynched, The Joker will die only after he gets the last laugh!"
+                }
+            }
+        },
+        {
+            "role": "lastlaugh",
+            "translation": "Dying Joker",
+            "side": "joker",
+            "help": "They tried to get rid of you... But you WILL get the last laugh! You have a top priority /poison which will kill someone the next day, but you will die at the end of the night. Pick your target wisely...",
+            "actions": {
+                "startup": "team-reveal",
+                "initialCondition": {
+                    "poison": {
+                        "count": 1,
+                        "poisonDeadMessage": "You have breathed your last..."
+                    }
+                },
+                "night": {
+                    "poison": {
+                        "target": "AnyButTeam",
+                        "common": "Self",
+                        "priority": 1,
+                        "broadcast": "Team"
+                    }
+                }
+            }
+        },
+        {
+            "role": "harley",
+            "translation": "Harley Quinn",
+            "side": "joker",
+            "help": "You are the lover of the Joker, Harley Quinn!  Because of your relationship with Joker, you know him from the start and also share a a night kill with him. You will also never be haxed due to the gut-wrenching fear your one true love creates within the hearts of all spies. In addition, your use of pies to the face is baffling, therefore you are able to /distract once per night.",
+            "actions": {
+                "startup": "team-reveal",
+                "night": {
+                    "kill": {
+                        "target": "AnyButTeam",
+                        "common": "Team",
+                        "priority": 15
+                    },
+                    "distract": {
+                        "target": "AnyButTeam",
+                        "common": "Self",
+                        "priority": 5,
+                        "distractmsg": "'Is that... pumpkin?' You couldn't see what was going on because Harley put a pie in your face!"
+                    }
+                }
+            }
+        },
+        {
+            "role": "batman",
+            "translation": "Batman",
+            "side": "village",
+            "help": "The Dark Knight, the Caped Crusader, the World's Greatest Detective, Batman... Whatever you call yourself, you're the coolest of the cool. Trained in several forms of martial arts, your skill is almost unparalleled. However, you have a thing against killing. It's not your style. You don't do guns. You're also very good at sneaking around, so you can /stalk two people at night. You have a lot of influence over Gotham, so your vote counts as 2.",
+            "actions": {
+                "vote": 2,
+                "night": {
+                    "stalk": {
+                        "common": "Self",
+                        "priority": 99,
+                        "target": "AnyButSelf",
+                        "limit": 2
+                    }
+                }
+            }
+        },
+        {
+            "role": "flash",
+            "translation": "Flash",
+            "side": "village",
+            "help": "You are the Flash! Being the fastest human in the world, able to move at the speed of light with ease, you have 1 high priority kill every night. Due to your blazing speed, you also can never be detected by spies, but you have a weak stature making your voting power -1.",
+            "actions": {
+                "vote": -1,
+                "avoidHax": [
+                    "kill"
+                ],
+                "night": {
+                    "kill": {
+                        "common": "Self",
+                        "target": "AnyButSelf",
+                        "priority": 3
+                    }
+                }
+            }
+        },
+        {
+            "role": "superman",
+            "translation": "Superman",
+            "side": "village",
+            "help": "As the Man of Steel, Superman, you're the strongest person on Earth. Hailing from planet Krypton, you possess superhuman strength, stamina, and agility, as well as special powers such as flight and heat vision. All this allows you to use your heat vision to /kill someone during the day! Your identity is a secret, so you won't be revealed.",
+            "actions": {
+                "standby": {
+                    "kill": {
+                        "target": "AnyButSelf",
+                        "msg": "Use /kill to blast someone with heat!",
+                        "killmsg": "BZZZZZT! ~Target~ was zapped with Superman's heat vision! 'What's the matter, can't take the heat?'"
+                    }
+                }
+            }
+        }
+    ],
+    "roles1": [
+        "batman"
+    ]
+}

@@ -1,5 +1,6 @@
 {
     "name": "DC",
+    "altname": "DC Universe",
     "author": [
         "Sky Sentinel",
         "Withoutatrace"
@@ -27,7 +28,8 @@
                     "kill": {
                         "target": "AnyButTeam",
                         "common": "Team",
-                        "priority": 15
+                        "priority": 15,
+                        "broadcast": "Team"
                     }
                 },
                 "standby": {
@@ -77,19 +79,25 @@
             "role": "harley",
             "translation": "Harley Quinn",
             "side": "joker",
-            "help": "You are the lover of the Joker, Harley Quinn!  Because of your relationship with Joker, you know him from the start and also share a a night kill with him. You will also never be haxed due to the gut-wrenching fear your one true love creates within the hearts of all spies. In addition, your use of pies to the face is baffling, therefore you are able to /distract once per night.",
+            "help": "You are the lover of the Joker, Harley Quinn!  Because of your relationship with Joker, you know him from the start and also share a a night kill with him. You will also never be haxed due to the gut-wrenching fear your one true love creates within the hearts of all spies. In addition, your use of pies to the face is baffling, and therefore you are able to /distract once per night.",
             "actions": {
                 "startup": "team-reveal",
+                "avoidHax": [
+                    "kill",
+                    "distract"
+                ],
                 "night": {
                     "kill": {
                         "target": "AnyButTeam",
                         "common": "Team",
-                        "priority": 15
+                        "priority": 15,
+                        "broadcast": "Team"
                     },
                     "distract": {
                         "target": "AnyButTeam",
                         "common": "Self",
                         "priority": 5,
+                        "broadcast": "Team",
                         "distractmsg": "'Is that... pumpkin?' You couldn't see what was going on because Harley put a pie in your face!"
                     }
                 }
@@ -142,6 +150,49 @@
                         "target": "AnyButSelf",
                         "msg": "Use /kill to blast someone with heat!",
                         "killmsg": "BZZZZZT! ~Target~ was zapped with Superman's heat vision! 'What's the matter, can't take the heat?'"
+                    }
+                }
+            }
+        },
+        {
+            "role": "glantern",
+            "translation": "Green Lantern",
+            "side": "village",
+            "help": "You are one of the mighty Green Lantern! You have unimaginable strength, given to you by the power ring that you bear. With this power, you have the ability to protect one person a night, while also being able to protect2 every other night because your ring must recharge.  Work with the DC heroes to rid the world of evil!",
+            "actions": {
+                "night": {
+                    "protect": {
+                        "common": "Self",
+                        "target": "AnyButSelf",
+                        "priority": 10
+                    },
+                    "protect2": {
+                        "common": "Self",
+                        "target": "AnyButSelf",
+                        "priority": 10,
+                        "recharge": 2,
+                        "command": "protect"
+                    }
+                }
+            }
+        },
+        {
+            "role": "oracle",
+            "translation": "Oracle",
+            "side": "village",
+            "help": "You are the wise and all-knowing Oracle! You have multiple resources to your advantage (some less public than others), allowing you to know the identity of anyone with ease. Use /inspect to reveal their identity to yourself, and you may also hax Batman's /stalk during the night. Team up with the rest of the heroes to rid the world of villains!",
+            "actions": {
+                "hax": {
+                    "stalk": {
+                        "revealTeam": 0.45,
+                        "revealPlayer": 0.2
+                    }
+                },
+                "night": {
+                    "inspect": {
+                        "common": "Self",
+                        "target": "AnyButSelf",
+                        "priority": 75
                     }
                 }
             }

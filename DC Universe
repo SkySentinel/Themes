@@ -14,6 +14,14 @@
         {
             "side": "joker",
             "translation": "Joker Mafia"
+        },
+        {
+            "side": "deathstroke",
+            "translation": "Deathstroke"
+        },
+        {
+            "side": "toxic",
+            "translation": "Toxic Trio"
         }
     ],
     "roles": [
@@ -193,6 +201,121 @@
                         "common": "Self",
                         "target": "AnyButSelf",
                         "priority": 75
+                    }
+                }
+            }
+        },
+        {
+            "role": "deathstroke",
+            "translation": "Deathstroke",
+            "side": "deathstroke",
+            "help": "You have been blessed with the chance to be one of the most epic villains in the history of the DC universe, Deathstroke. Armed to the teeth with guns and a sword, and highly trained in martial arts, you're very tough to kill. In fact, at night, your superhuman regenerative powers allow you to evade kills half of the time! During the night, you can /inspect someone, using your immense brainpower to discover who they are. Anyone who stands in your way will be treated with a bullet to the head! Use the information you collect during the night to /kill your biggest threats during the day. Due to your intimidating appearance, your vote counts as 2.",
+            "actions": {
+                "vote": 2,
+                "night": {
+                    "inspect": {
+                        "common": "Self",
+                        "priority": 75,
+                        "target": "AnyButSelf"
+                    }
+                },
+                "standby": {
+                    "kill": {
+                        "target": "AnyButSelf",
+                        "msg": "You can remove someone from the game with /kill. This won't reveal you.",
+                        "killmsg": "Deathstroke pulls out his sword, slashing at ~Target~, knocking them down. As ~Target~ stuggles to get up, Deathstroke pulls out a pistol and puts them down for good."
+                    }
+                },
+                "distract": {
+                    "mode": "killattacker",
+                    "hookermsg": "You tried to distract Deathstroke! That was a rather terrible idea.",
+                    "msg": "The ~Distracter~ came to you last night... Only you came back."
+                }
+            }
+        },
+        {
+            "role": "pznivy",
+            "translation": "Poison Ivy",
+            "side": "toxic",
+            "help": "One of the most underrated and deadly supervillains is Poison Ivy. Her blood is poison. Everything about her is toxic. Venomous.  So what draws people to her? Her great looks and charm can mesmerize even the most hardheaded of heroes. Just a touch can be fatal. You can /poison someone every night (shared with your team) to kill them in two nights, and every other night you can /kiss someone else to poison them, too. They'll die the next night. Obviously, poisons like the Joker's won't hurt you in any way, so you're immune to that.",
+            "actions": {
+                "startup": "team-reveal-with-roles",
+                "poison": {
+                    "mode": "ignore"
+                },
+                "night": {
+                    "poison": {
+                        "common": "Team",
+                        "target": "AnyButTeam",
+                        "count": 3,
+                        "priority": 33,
+                        "broadcast": "Team",
+                        "poisonDeadMessage": "The Toxic Trio's poison destroyed you."
+                    },
+                    "kiss": {
+                        "command": "poison",
+                        "common": "Self",
+                        "target": "AnyButTeam",
+                        "count": 2,
+                        "recharge": 2,
+                        "priority": 30,
+                        "broadcast": "Team",
+                        "broadcastmsg": "Poison Ivy winked at ~Target~!",
+                        "poisonDeadMessage": "Just a kiss from Poison Ivy is all it took..."
+                    }
+                }
+            }
+        },
+        {
+            "role": "scarecrow",
+            "translation": "Scarecrow",
+            "side": "toxic",
+            "help": "Wielding a fear toxin you created, you have the power to make even Batman drop to his knees in horror. Being the scariest 'human' in the world has its perks, and you can /distract someone at night-- they'll be too busy crying themselves to sleep to do anything else. You also share a two-night poison with your team, Bane and Poison Ivy.",
+            "actions": {
+                "startup": "team-reveal-with-roles",
+                "night": {
+                    "poison": {
+                        "common": "Team",
+                        "target": "AnyButTeam",
+                        "count": 3,
+                        "priority": 33,
+                        "broadcast": "Team",
+                        "poisonDeadMessage": "The Toxic Trio's poison destroyed you."
+                    },
+                    "distract": {
+                        "common": "Self",
+                        "distractmsg": "Painful memories kept you awake all night, and you couldn't manage to do anything...",
+                        "priority": 6,
+                        "broadcast": "Team",
+                        "broadcastmsg": "Scarecrow follows ~Target~ into the darkness...",
+                        "target": "AnyButTeam"
+                    }
+                }
+            }
+        },
+        {
+            "role": "bane",
+            "translation": "Bane",
+            "side": "toxic",
+            "help": "You are the quite muscular Bane, ready to destroy the world with your steroid, Venom, that increases your strength in massive amounts and fuels your life. With this toxic boost, you are able to kill once every other night. You also share a /poison with your team that allows you to kill a person within two nights.",
+            "actions": {
+                "startup": "team-reveal-with-roles",
+                "night": {
+                    "poison": {
+                        "common": "Team",
+                        "target": "AnyButTeam",
+                        "count": 3,
+                        "priority": 33,
+                        "broadcast": "Team",
+                        "poisonDeadMessage": "The Toxic Trio's poison destroyed you."
+                    },
+                    "kill": {
+                        "common": "Self",
+                        "recharge": 2,
+                        "target": "AnyButTeam",
+                        "priority": 18,
+                        "broadcast": "Team",
+                        "broadcastmsg": "Bane cracks his knuckles and heads for ~Target~."
                     }
                 }
             }

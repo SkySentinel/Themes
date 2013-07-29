@@ -112,6 +112,12 @@
             }
         },
         {
+            "role": "citizen",
+            "translation": "Citizen",
+            "side": "village",
+            "help": "You are a citizen, located in the DC Universe. Be it in Metropolis, Gotham City, or some other place, you don't have much to do besides sit around and wait for heroes to rescue you. As such, you can only /vote during the day to help your team!"
+        },
+        {
             "role": "batman",
             "translation": "Batman",
             "side": "village",

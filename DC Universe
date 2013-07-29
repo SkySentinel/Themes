@@ -12,6 +12,10 @@
             "translation": "Heroes"
         },
         {
+            "side": "lex",
+            "translation": "Lex Luthor"
+        },
+        {
             "side": "joker",
             "translation": "Joker Mafia"
         },
@@ -172,20 +176,15 @@
             "role": "glantern",
             "translation": "Green Lantern",
             "side": "village",
-            "help": "You are one of the mighty Green Lantern! You have unimaginable strength, given to you by the power ring that you bear. With this power, you have the ability to protect one person a night, while also being able to protect2 every other night because your ring must recharge.  Work with the DC heroes to rid the world of evil!",
+            "help": "You are one of the mighty Green Lantern! You have unimaginable strength, given to you by the power ring that you bear. With this power, you have the ability to create objects out of thin air. You can /distract one person during the night by trapping them in a cage, stopping them from doing anything!",
             "actions": {
                 "night": {
-                    "protect": {
+                    "distract": {
                         "common": "Self",
                         "target": "AnyButSelf",
-                        "priority": 10
-                    },
-                    "protect2": {
-                        "common": "Self",
-                        "target": "AnyButSelf",
-                        "priority": 10,
-                        "recharge": 2,
-                        "command": "protect"
+                        "priority": 7,
+                        "distractmsg": "The Green Lantern trapped you in a cage, forcing you to stay there all night.",
+                        "teammsg": "Your teammate was trapped by Green Lantern and you spent all night trying to get them out."
                     }
                 }
             }
@@ -207,6 +206,22 @@
                         "common": "Self",
                         "target": "AnyButSelf",
                         "priority": 75
+                    }
+                }
+            }
+        },
+        {
+            "role": "wonder",
+            "translation": "Wonder Woman",
+            "side": "village",
+            "help": "The Amazonian Warrior, you are Wonder Woman! You wield an infamous shield, impervious to any kind of attack. With this amazing shield, you can /shield one person every night to protect them from harm.",
+            "actions": {
+                "night": {
+                    "shield": {
+                        "command": "protect",
+                        "common": "Self",
+                        "target": "AnyButSelf",
+                        "priority": 10
                     }
                 }
             }
@@ -323,6 +338,31 @@
                         "broadcast": "Team",
                         "broadcastmsg": "Bane cracks his knuckles and heads for ~Target~."
                     }
+                }
+            }
+        },
+        {
+            "role": "lex",
+            "side": "lex",
+            "translation": "Lex Luthor",
+            "help": "You are the almighty Lex Luthor, the nemesis of Superman. Due to this rivalry, you are the one that keeps Superman's abilities in check. Therefore, you evade Superman's daykill. Furthermore, you are able to kill in the night. In addition, your incredible power and superior intellect as well as your influence over Metropolis give you a vote of 1940.",
+            "actions": {
+                "vote": 1940,
+                "night": {
+                    "kill": {
+                        "common": "Team",
+                        "target": "AnyButTeam",
+                        "priority": 19
+                    }
+                },
+                "daykill": {
+                    "mode": {
+                        "ignore": [
+                            "superman"
+                        ]
+                    },
+                    "targetmsg": "Superman tried to kill you, but it didn't even dent your state-of-the-art super suit.",
+                    "msg": "'Hmm... I can't kill Luthor... Too powerful...'"
                 }
             }
         }

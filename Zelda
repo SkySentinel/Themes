@@ -1,7 +1,11 @@
 {
-    "name": "Zelda",
-    "author": ["Tyrex", "Withoutatrace", "Sky Sentinel"],
-    "summary": "The battle between the Triforce continues throughout the Kingdom of Hyrule! Link is the only one who can take down Ganondorf, but he must be careful when the treacherous Koume is around or he'll get struck during the day! Zelda should be wary of Skull Kid, who lurks among the citizens of Hyrule, and the evil Kotake when her magic freezes! Vaati and his army of minions is trying to take over the Kingdom during this time of crisis. While all hell is loose, the Demon King Malladus appears and destroy anyone who opposes him!",
+    "name": "Zelda+",
+    "author": [
+        "Tyrex",
+        "Withoutatrace",
+        "Sky Sentinel"
+    ],
+    "summary": "The battle between the Triforce continues throughout the Kingdom of Hyrule! Link is the only one who can take down Ganondorf, but he must be careful when the treacherous Koume is around or he'll get struck during the day! Zelda should be wary of Skull Kid, who lurks among the citizens of Hyrule, and the evil Kotake when her magic freezes! Vaati and his army of minions is trying to take over the Kingdom during this time of crisis. Ghirahim and Demise enter the fray, taking no prisoners and mercilessly destroying anyone in the way!",
     "sides": [
         {
             "side": "mafia1",
@@ -20,8 +24,8 @@
             "translation": "Skull Kid"
         },
         {
-            "side": "godfather",
-            "translation": "Demon King"
+            "side": "godfathers",
+            "translation": "Ghirahim and Demise"
         }
     ],
     "roles": [
@@ -67,8 +71,9 @@
             "role": "werewolf",
             "translation": "Skull Kid",
             "side": "werewolf",
-            "help": "You are the Skull Kid, wearing Majora's Mask. Type /Kill [name] to kill someone! You are alone, but Zelda will think you are a normal citizen, you ignore distracters and even Navi can't find you!",
+            "help": "You are the Skull Kid, wearing Majora's Mask. Type /Kill [name] to kill someone! You are alone unless the Moon is in, but Zelda will think you are a normal citizen, you ignore distracters and even Navi can't find you! Your vote counts as 1.1 because you're super sneaky and snuck in a bit extra.",
             "actions": {
+                "vote": 1.1,
                 "night": {
                     "kill": {
                         "target": "AnyButTeam",
@@ -116,38 +121,61 @@
             "role": "spy",
             "translation": "Navi",
             "side": "village",
-            "help": "You are an annoying little fairy and know more than you should. Say HEY, LISTEN and someone will probably kill you.",
+            "help": "You are an annoying little fairy and know more than you should. Say 'HEY, LISTEN!' and someone will probably kill you.",
             "actions": {
                 "hax": {
                     "kill": {
-                        "revealTeam": 0.33,
-                        "revealPlayer": 0.22
+                        "revealTeam": 0.3,
+                        "revealPlayer": 0.2
                     }
                 }
             }
         },
         {
-            "role": "godfather",
-            "translation": "Malladus",
-            "side": "godfather",
-            "help": "You are the Demon King! Terrorize Hyrule by killing up to 2 targets by typing /kill [name]. You destroy any distracters if they dare to stand in your way.",
+            "role": "godfather1",
+            "translation": "Ghirahim",
+            "side": "godfathers",
+            "help": "You are Ghirihim! Nimble and mysterious, you can /stalk one person during the night to see who they visit! You can also /kill one person during the night. This is not shared with your team.",
             "actions": {
+                "startup": "team-reveal",
                 "night": {
                     "kill": {
                         "target": "AnyButSelf",
                         "common": "Self",
-                        "priority": 14,
-                        "limit": 2
+                        "priority": 11
+                    },
+                    "stalk": {
+                        "target": "AnyButSelf",
+                        "common": "Self",
+                        "priority": 99
                     }
+                }
+            }
+        },
+        {
+            "role": "godfather2",
+            "translation": "Demise",
+            "side": "godfathers",
+            "help": "You are Demise, the source of all monsters. You're extremely skilled in combat and can /kill one person at night. Due to your large stature you can /protect someone every other night. You also poison anyone that kills you.",
+            "actions": {
+                "startup": "team-reveal",
+                "kill": {
+                    "mode": "poisonattacker",
+                    "count": 3,
+                    "poisonDeadMessage": "Demise's curse took its toll on you, and you died."
                 },
-                "distract": {
-                    "mode": "ChangeTarget",
-                    "hookermsg": "The Demon King just kills anyone who is in his way. Including you!",
-                    "msg": "Someone was in your way, so you couldn't kill your targets. But you killed the fool instead!"
-                },
-                "avoidHax": [
-                    "kill"
-                ]
+                "night": {
+                    "kill": {
+                        "target": "AnyButSelf",
+                        "common": "Self",
+                        "priority": 14
+                    },
+                    "protect": {
+                        "target": "AnyButSelf",
+                        "common": "Self",
+                        "priority": 7
+                    }
+                }
             }
         },
         {
@@ -278,10 +306,30 @@
             }
         },
         {
-            "role": "mafiaboss2",
+            "role": "mafiaboss25",
             "translation": "Ganondorf",
             "side": "mafia2",
-            "help": "You are the Great King of Evil! You can use /Kill [name] to kill someone and can't be killed yourself by anyone except Link! You also can't be distracted!",
+            "help": "You are the Great King of Evil! You can use /Kill [name] to kill someone and can't be killed yourself by anyone except Link! You can be haxed and distracted, so be careful!",
+            "actions": {
+                "night": {
+                    "kill": {
+                        "target": "AnyButTeam",
+                        "common": "Team",
+                        "priority": 15,
+                        "broadcast": "team"
+                    }
+                },
+                "kill": {
+                    "mode": "ignore"
+                },
+                "startup": "team-reveal-with-roles"
+            }
+        },
+        {
+            "role": "mafiaboss2",
+            "translation": "Ganon",
+            "side": "mafia2",
+            "help": "You are the Great King of Evil in demon form! You can use /Kill [name] to kill someone and can't be killed yourself by anyone except Link! Since you are empowered by the Triforce of Power, you cannot be distracted until you calm down after Link's death.",
             "actions": {
                 "night": {
                     "kill": {
@@ -296,7 +344,7 @@
                 },
                 "distract": {
                     "mode": "ignore",
-                    "msg": "Tingle tried to sell you a map, but you simply popped his balloon and went on with your business."
+                    "msg": "Tingle tried to sell you a map, but you roared in his face and he ran away."
                 },
                 "avoidHax": [
                     "kill"
@@ -308,7 +356,7 @@
             "role": "samurai",
             "translation": "Link",
             "side": "village",
-            "help": "You are the Hero of Time and the only one who can kill Ganondorf! Type /Kill [name] during the day phase to kill someone! You will be revealed when you kill, so make wise choices and claim in the first night to get protection!",
+            "help": "You are the Hero of Time and the only one who can kill Ganon! Type /Kill [name] during the day phase to kill someone! You will be revealed when you kill, so make wise choices and claim in the first night to get protection!",
             "actions": {
                 "standby": {
                     "kill": {
@@ -316,7 +364,11 @@
                         "msg": "You can kill now using /kill [name] :",
                         "killmsg": "~Self~ raises the Master Sword into the air, followed by a few quick slashes to kill ~Target~!"
                     }
-                }
+                },
+"onDeath": {
+"convertRoles": {"mafiaboss2": "mafiaboss25"},
+"convertmsg": "Upon the death of the Hero of the Goddess, Ganon found it unnecessary to have so much power, and reverted back to his Gerudo form."
+}
             }
         },
         {
@@ -326,7 +378,7 @@
             "help": "You are Midna, a strange, dark creature and sided with the People of Hyrule, but Zelda will not be sure whether you are good or evil when she inspects you!",
             "actions": {
                 "inspect": {
-                    "revealAs": "godfather"
+                    "revealAs": "godfather1"
                 }
             }
         },
@@ -334,7 +386,7 @@
             "role": "moon",
             "translation": "Moon",
             "side": "werewolf",
-            "help": "You are the Moon that threats to fall over Termina! As the days passes, you get closer to the town, which also changes your powers! Your powers will revert if someone plays Song of Time though!",
+            "help": "You are the Moon that threatens to fall over Termina! As the days passes, you get closer to the town, which also changes your powers! Your powers will revert if someone plays Song of Time, though!",
             "info": "Power changes every turn. Can expose on the 1st turn, has +4 votes on the 2nd and can nightkill on the 3rd (cycle repeats after that). Sided with Skull Kid.",
             "actions": {
                 "initialCondition": {
@@ -427,6 +479,8 @@
         "villager",
         "mayor",
         "farore",
+        "villager",
+        "villager",
         "villager"
     ],
     "roles2": [
@@ -447,8 +501,8 @@
         "farore",
         "villager",
         "miller",
-        "godfather",
-        "villager",
+        "godfather2",
+        "godfather1",
         "villager",
         "din",
         "villager",
@@ -463,12 +517,10 @@
         "villager",
         "villager",
         "hooker",
-        "mafia21",
         "farore",
         "mafia1",
         "miller",
         "din",
-        "mafia22",
         "villager",
         "villager",
         "mafia1",

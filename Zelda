@@ -30,6 +30,14 @@
     ],
     "roles": [
         {
+            "role": "millager",
+            "translation": "Citizen",
+            "side": "village",
+            "help": "You are a normal citizen of Hyrule. Vote to remove people in the day!",
+            "info": "Unlucky soul who becomes the Skull Kid when the original Skull Kid dies!",
+            "actions": {}
+        },
+        {
             "role": "villager",
             "translation": "Citizen",
             "side": "village",
@@ -73,6 +81,13 @@
             "side": "werewolf",
             "help": "You are the Skull Kid, wearing Majora's Mask. Type /Kill [name] to kill someone! You are alone unless the Moon is in, but Zelda will think you are a normal citizen, you ignore distracters and even Navi can't find you! Your vote counts as 1.1 because you're super sneaky and snuck in a bit extra.",
             "actions": {
+                "startup": "team-reveal-with-roles",
+                "onDeath": {
+                    "convertRoles": {
+                        "millager": "werewolf"
+                    },
+                    "convertmsg": "An unlucky citizen picked up Majora's Mask and put it on..."
+                },
                 "vote": 1.1,
                 "night": {
                     "kill": {
@@ -365,10 +380,12 @@
                         "killmsg": "~Self~ raises the Master Sword into the air, followed by a few quick slashes to kill ~Target~!"
                     }
                 },
-"onDeath": {
-"convertRoles": {"mafiaboss2": "mafiaboss25"},
-"convertmsg": "Upon the death of the Hero of the Goddess, Ganon found it unnecessary to have so much power, and reverted back to his Gerudo form."
-}
+                "onDeath": {
+                    "convertRoles": {
+                        "mafiaboss2": "mafiaboss25"
+                    },
+                    "convertmsg": "Upon the death of the Hero of the Goddess, Ganon found it unnecessary to have so much power, and reverted back to his Gerudo form."
+                }
             }
         },
         {
@@ -389,6 +406,7 @@
             "help": "You are the Moon that threatens to fall over Termina! As the days passes, you get closer to the town, which also changes your powers! Your powers will revert if someone plays Song of Time, though!",
             "info": "Power changes every turn. Can expose on the 1st turn, has +4 votes on the 2nd and can nightkill on the 3rd (cycle repeats after that). Sided with Skull Kid.",
             "actions": {
+                "startup": "team-reveal-with-roles",
                 "initialCondition": {
                     "curse": {
                         "curseCount": 1,
@@ -405,6 +423,7 @@
             "help": "You are the Moon! For the next 24 hours, you can use /expose [name] during the day to reveal someone's identity while keeping yourself hidden!",
             "hide": true,
             "actions": {
+                "startup": "team-reveal-with-roles",
                 "initialCondition": {
                     "curse": {
                         "curseCount": 1,
@@ -428,6 +447,7 @@
             "help": "You are the Moon! For the next 24 hours, your vote will count as +4!",
             "hide": true,
             "actions": {
+                "startup": "team-reveal-with-roles",
                 "initialCondition": {
                     "curse": {
                         "curseCount": 1,
@@ -445,6 +465,7 @@
             "help": "You are the Moon! For the next 24 hours, you can type /kill [name] during the night to defeat an opponent!",
             "hide": true,
             "actions": {
+                "startup": "team-reveal-with-roles",
                 "initialCondition": {
                     "curse": {
                         "curseCount": 1,
@@ -481,7 +502,7 @@
         "farore",
         "villager",
         "villager",
-        "villager"
+        "millager"
     ],
     "roles2": [
         "nayru",
@@ -509,7 +530,7 @@
         "mafia21",
         "mafia1",
         "villager",
-        "villager",
+        "millager",
         "villager",
         "moon",
         "mafia1",

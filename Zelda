@@ -34,8 +34,34 @@
             "translation": "Citizen",
             "side": "village",
             "help": "You are a normal citizen of Hyrule. Vote to remove people in the day!",
-            "info": "Unlucky soul who becomes the Skull Kid when the original Skull Kid dies!",
+            "info": "Unlucky citizen who becomes the Skull Kid when the original Skull Kid dies! Sided with the People of Hyrule.",
             "actions": {}
+        },
+        {
+            "role": "phantom",
+            "translation": "Phantom",
+            "side": {
+                "random": {
+                    "godfathers": 0.2,
+                    "mafia1": 0.2,
+                    "mafia2": 0.2,
+                    "werewolf": 0.2
+                }
+            },
+            "help": "You are a phantom, a creature who protects various temples! Almost impervious to anything Link throws at you, you will not die if you are attacked by him. He will die instead! Your vote counts as 0 and you have a voteshield of -1.",
+            "info": "Bombs daykills. Vote of zero, voteshield of -1. Sided with a random bad team.",
+            "actions": {
+                "vote": 0,
+                "voteshield": -1,
+                "daykill": {
+                    "mode": {
+                        "revenge": [
+                            "samurai"
+                        ]
+                    }
+                },
+                "daykillrevengemsg": "Link tried to attack the Phantom, but the Phantom blocked the attack and released all the sand from the hourglass of time."
+            }
         },
         {
             "role": "villager",
@@ -48,8 +74,13 @@
             "role": "inspector",
             "translation": "Zelda",
             "side": "village",
-            "help": "You are the Princess of Hyrule and can use /Inspect [name] to find someone's identity with the help of the Triforce of Wisdom! However, you are easily distracted, so maybe you should stay hidden and find a voice to speak for you.",
+            "help": "You are the Princess of Hyrule and can use /Inspect [name] to find someone's identity with the help of the Triforce of Wisdom! However, you are easily distracted, so maybe you should stay hidden and find a voice to speak for you. Your magic also allows you to evade 5% of kills.",
             "actions": {
+    "kill": {
+        "mode": {
+            "evadeChance": 0.05
+        }
+    },
                 "night": {
                     "inspect": {
                         "target": "AnyButSelf",

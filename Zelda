@@ -5,7 +5,7 @@
         "Withoutatrace",
         "Sky Sentinel"
     ],
-    "summary": "The battle between the Triforce continues throughout the Kingdom of Hyrule! Link is the only one who can take down Ganondorf, but he must be careful when the treacherous Koume is around or he'll get struck during the day! Zelda should be wary of Skull Kid, who lurks among the citizens of Hyrule, and the evil Kotake when her magic freezes! Vaati and his army of minions is trying to take over the Kingdom during this time of crisis. Ghirahim and Demise enter the fray, taking no prisoners and mercilessly destroying anyone in the way!",
+    "summary": "The battle between the Triforce continues throughout the Kingdom of Hyrule! Link is the only one who can take down Ganondorf, but he must be careful when the treacherous Koume is around or he'll get struck during the day! The dangerous Phantom also awaits Link's arrival, and won't hesitate to destroy him if he attacks! Zelda should be wary of Skull Kid, who lurks among the citizens of Hyrule, and the evil Kotake when her magic freezes! Vaati and his army of minions is trying to take over the Kingdom during this time of crisis. Ghirahim and Demise enter the fray, taking no prisoners and mercilessly crushing anyone in the way!",
     "sides": [
         {
             "side": "mafia1",
@@ -256,7 +256,7 @@
             "role": "mafia21",
             "translation": "Koume",
             "side": "mafia2",
-            "help": "You are the Gerudo Sorceress of Flame. Type /Kill [name] to kill someone! You can also use your fire magic to burn someone in the day, but that will reveal yourself so use it only in an act of despair!",
+            "help": "You are the Gerudo Sorceress of Flame. Type /Kill [name] to kill someone! You can also use your fire magic to burn someone in the day, but that will usually reveal yourself so use it only in an act of despair!",
             "actions": {
                 "night": {
                     "kill": {
@@ -270,7 +270,9 @@
                     "kill": {
                         "target": "AnyButTeam",
                         "msg": "You can kill now using /kill [name] :",
-                        "killmsg": "Koume uses her fire magic to burn ~Target~ to the bones! ~Self~ lets out an evil laugh."
+                        "killmsg": "Koume uses her fire magic to burn ~Target~ to the bones!",
+                        "revealChance": 0.85,
+                        "revealmsg": "~Self~ lets out an evil laugh."
                     }
                 },
                 "startup": "team-reveal-with-roles"

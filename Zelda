@@ -74,13 +74,8 @@
             "role": "inspector",
             "translation": "Zelda",
             "side": "village",
-            "help": "You are the Princess of Hyrule and can use /Inspect [name] to find someone's identity with the help of the Triforce of Wisdom! However, you are easily distracted, so maybe you should stay hidden and find a voice to speak for you. Your magic also allows you to evade 5% of kills.",
+            "help": "You are the Princess of Hyrule and can use /Inspect [name] to find someone's identity with the help of the Triforce of Wisdom! However, you are easily distracted, so maybe you should stay hidden and find a voice to speak for you.",
             "actions": {
-    "kill": {
-        "mode": {
-            "evadeChance": 0.05
-        }
-    },
                 "night": {
                     "inspect": {
                         "target": "AnyButSelf",
@@ -443,21 +438,6 @@
                 }
             }
         },
-{
-"role": "linebeck",
-"translation": "Linebeck",
-"side": "village",
-"help": "You're Captain Linebeck of the S.S. Linebeck, and a good friend to Link! Being a loudmouth by nature, you can /expose someone during the day. This will reveal you, so use it sparingly.",
-"actions":{
-"standby": {
-"expose": {
-"target": "AnyButSelf",
-"msg": "Use /expose to tell everyone someone's identity! This will reveal you.",
-"exposemsg": "±~Self~: 'Oh, nononononono! Link! LINNNNK! ~Target~ is ~Role~!'"
-}
-}
-}
-},
         {
             "role": "moon",
             "translation": "Moon",
@@ -597,7 +577,6 @@
         "villager",
         "mafia1",
         "miller2",
-        "linebeck",
         "villager",
         "villager",
         "mafia1",

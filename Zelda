@@ -60,7 +60,7 @@
                         ]
                     }
                 },
-                "daykillrevengemsg": "Link tried to attack the Phantom, but the Phantom blocked the attack and released all the sand from the hourglass of time."
+                "daykillrevengemsg": "Link tried to attack the Phantom, but the Phantom blocked the attack and slashed back, releasing all the sand from the Phantom Hourglass."
             }
         },
         {
@@ -425,13 +425,39 @@
             "role": "miller",
             "translation": "Midna",
             "side": "village",
-            "help": "You are Midna, a strange, dark creature and sided with the People of Hyrule, but Zelda will not be sure whether you are good or evil when she inspects you!",
+            "help": "You are Midna, a strange, dark creature and sided with the People of Hyrule, but Zelda will not be sure whether you are good or evil when she inspects you! You'll be inspected as a random role.",
+            "actions": {
+                "inspect": {
+                    "revealAs": "*"
+                }
+            }
+        },
+        {
+            "role": "miller2",
+            "translation": "Groose",
+            "side": "village",
+            "help": "You are Groose, a tough guy with a soft spot for girls-- especially Zelda. You've decided to make nice with Link to get closer to the princess, but you're still a bit suspicious, so Zelda will see you as an enemy.",
             "actions": {
                 "inspect": {
                     "revealAs": "godfather1"
                 }
             }
         },
+{
+"role": "linebeck",
+"translation": "Linebeck",
+"side": "village",
+"help": "You're Captain Linebeck of the S.S. Linebeck, and a good friend to Link! Being a loudmouth by nature, you can /expose someone during the day. This will reveal you, so use it sparingly.",
+"actions":{
+"standby": {
+"expose": {
+"target": "AnyButSelf",
+"msg": "Use /expose to tell everyone someone's identity! This will reveal you.",
+"exposemsg": "±~Self~: 'Oh, nononononono! Link! LINNNNK! ~Target~ is ~Role~!'"
+}
+}
+}
+},
         {
             "role": "moon",
             "translation": "Moon",
@@ -566,15 +592,12 @@
         "millager",
         "villager",
         "moon",
+        "phantom",
         "mafia1",
         "villager",
-        "villager",
-        "villager",
-        "hooker",
-        "farore",
         "mafia1",
-        "miller",
-        "din",
+        "miller2",
+        "linebeck",
         "villager",
         "villager",
         "mafia1",
